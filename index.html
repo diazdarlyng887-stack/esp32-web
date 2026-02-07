@@ -9,17 +9,8 @@
   body {
     font-family: Arial, sans-serif;
     margin:0; padding:0;
-    background: url('/mnt/data/f3e918cd-8cc9-4341-8508-6eaaf8e6b54b.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #a3d2f2; /* azul suave uniforme */
     position: relative;
-  }
-
-  /* Filtro oscuro corregido */
-  body::before {
-    content:"";
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.5);
-    z-index:-1;
   }
 
   header {
@@ -43,7 +34,7 @@
     padding:20px; margin:20px 0; border-radius:15px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     opacity:0; transform: translateY(50px); transition: all 0.6s ease;
-    color:#000; /* texto visible sobre fondo claro */
+    color:#000;
   }
   .card.visible { opacity:1; transform:translateY(0); }
   .card h2 { margin-top:0; color:#0077cc; }
@@ -64,6 +55,19 @@
     transform: translateY(0) scale(1.03);
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Caja Conceptos debajo de Bienvenido */
+  #conceptos-box {
+    background: #ffffff;
+    padding:15px; margin:15px 0; border-radius:12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  #conceptos-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
   }
 
   #openModalBtn { padding:10px 20px; background:#0077cc; color:white; border:none; cursor:pointer; font-size:16px; border-radius:5px; }
@@ -98,6 +102,7 @@
   }
   .gift-box.open .lid { transform: rotateX(-120deg); }
   .gift-box.open .gift-text { color:#555; font-weight:normal; transform: scale(1.1); }
+
 </style>
 </head>
 <body>
@@ -112,9 +117,11 @@
 </nav>
 
 <main>
-  <!-- Conceptos debajo de Bienvenido -->
+  <!-- Caja debajo de Bienvenido -->
+  <div id="conceptos-box">📘 Conceptos Iniciales</div>
+
+  <!-- Conceptos originales -->
   <div id="conceptos" class="card">
-    <h2>📘 Conceptos Iniciales</h2>
     <div class="subcard">Concepto 1: Introducción al ESP32 y sus funcionalidades básicas.</div>
     <div class="subcard">Concepto 2: Conexión de dispositivos IoT y su integración en la web.</div>
     <div class="subcard">Concepto 3: Importancia de la comunicación inalámbrica y protocolos.</div>
@@ -149,7 +156,7 @@
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
 
-  <!-- ICONOS OFICIALES -->
+  <!-- ICONOS -->
   <div class="icons">
     <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
@@ -175,7 +182,7 @@
   </div>
 </div>
 
-<!-- Footer sorpresa -->
+<!-- Footer regalo -->
 <div class="footer-credit">
   <div class="gift-box" id="giftBox">
     <div class="lid"></div>
