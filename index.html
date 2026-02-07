@@ -146,18 +146,8 @@
     border-style: solid;
     border-color: #0077cc transparent transparent transparent;
   }
-  /* Hover normal */
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
-  }
-  /* Active para móviles */
-  .tooltip.active .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
-  }
+  .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
+  .tooltip.active .tooltiptext { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
 </style>
 </head>
 <body>
@@ -169,6 +159,7 @@
   <a onclick="scrollToSection('usos')">Usos</a>
   <a onclick="scrollToSection('sugerencias')">Sugerencias</a>
   <a onclick="scrollToSection('footerExtra')">Extras</a>
+  <a onclick="scrollToSection('colaboradoras')">Empresas</a>
 </nav>
 
 <main>
@@ -201,15 +192,20 @@
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
 
-  <!-- FOOTER EXTENDIDO EN FILA -->
+  <!-- FOOTER EXTRA CON CONTACTOS -->
   <div id="footerExtra" class="card">
     <h2>📇 Extras</h2>
     <div class="row-subcards">
-      <!-- Contactos -->
       <div class="subcard"><a href="mailto:sales@espressif.com">Correo: sales@espressif.com</a></div>
       <div class="subcard"><a href="tel:+18299361254">Tel: +1 829 936 1254</a></div>
       <div class="subcard"><a href="https://www.google.com/maps/search/Shanghái,+China" target="_blank">Dirección: Shanghái, China</a></div>
-      <!-- Empresas Colaboradoras en UNA sola subcard con tooltip -->
+    </div>
+  </div>
+
+  <!-- NUEVA SECCIÓN: EMPRESAS COLABORADORAS -->
+  <div id="colaboradoras" class="card">
+    <h2>🏢 Empresas que colaboraron</h2>
+    <div class="row-subcards">
       <div class="subcard">
         <a href="https://www.tsmc.com/" target="_blank" class="tooltip">Empresa 1: TSMC
           <span class="tooltiptext">Taiwan Semiconductor Manufacturing Company</span>
