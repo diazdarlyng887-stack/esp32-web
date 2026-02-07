@@ -4,146 +4,198 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Web</title>
-  <!-- Font Awesome para iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #0077cc; color: white; padding: 15px; text-align: center; }
+    nav a { margin: 0 10px; color: white; text-decoration: none; font-weight: bold; }
+    main { padding: 20px; }
+    .section { margin-bottom: 40px; }
+    .icons img { width: 40px; margin-right: 15px; vertical-align: middle; transition: transform 0.2s; }
+    .icons img:hover { transform: scale(1.3); }
 
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #1f3c88;
-    }
-
-    .card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px; /* separa las cards */
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn {
+    /* Botón de abrir modal */
+    #openModalBtn {
       padding: 10px 20px;
+      background: #0077cc;
+      color: white;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
-      background-color: #1f3c88;
-      color: #fff;
       font-size: 16px;
-      transition: background-color 0.2s, transform 0.2s;
+      border-radius: 5px;
     }
 
-    .btn:hover {
-      background-color: #0d265e;
-      transform: translateY(-2px);
-    }
-
-    input[type="text"] {
+    /* Modal */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0;
+      top: 0;
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      font-size: 16px;
+      height: 100%;
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.5); 
+      animation: fadeIn 0.3s;
     }
 
-    .icons {
-      margin-top: 20px;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      align-items: center;
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      position: relative;
+      animation: slideIn 0.3s;
     }
 
-    .icon-circle {
-      display: inline-flex;
-      justify-content:center;
-      align-items:center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      text-decoration: none;
-      transition: transform 0.2s;
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes slideIn { from {transform: translateY(-50px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .icon-circle:hover {
-      transform: scale(1.1);
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 8px; margin: 5px 0;
     }
 
-    .icon-instagram {
-      background-color: #E4405F;
-      color: #fff;
-      font-size: 20px;
+    .contact-form button {
+      padding: 10px 20px; background: #0077cc; color: white; border: none; cursor: pointer; border-radius: 5px;
     }
 
-    .icon-espressif {
-      background-color: #000;
+    .success, .error {
+      margin-top: 10px; font-weight: bold; text-align: center;
     }
-
-    .icon-espressif img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-    }
-
+    .success { color: green; animation: fadeIn 0.5s; }
+    .error { color: red; animation: fadeIn 0.5s; }
   </style>
 </head>
 <body>
 
-  <!-- SECCIÓN CARACTERÍSTICAS -->
-  <section>
-    <div class="card">
-      <h2>Características</h2>
-      <p>El ESP32 tiene un procesador dual-core y 520 KB de RAM interna, junto con 4 MB de memoria flash en la mayoría de los modelos. Cuenta con múltiples pines GPIO, convertidores analógico-digital, interfaces SPI, I2C, UART y PWM, además de Wi-Fi y Bluetooth integrados. También incluye soporte para sensores, actuadores y periféricos externos, todo en un solo chip compacto.</p>
-    </div>
+  <header>
+    <h1>Bienvenido a ESP32 Web</h1>
+    <nav>
+      <a href="#origen">Origen</a>
+      <a href="#caracteristicas">Características</a>
+      <a href="#usos">Usos</a>
+      <a href="#sugerencias">Sugerencias</a>
+    </nav>
+  </header>
 
-    <div class="card">
-      <h2>Origen</h2>
-      <p>El ESP32 es un microcontrolador de bajo costo y consumo, con Wi-Fi y Bluetooth integrados, desarrollado por la empresa china Espressif Systems en Shanghái. Lanzado oficialmente en 2016 como sucesor del ESP8266, se diseñó para mejorar la potencia, versatilidad y conectividad en aplicaciones de Internet de las Cosas (IoT).</p>
-    </div>
-  </section>
+  <main>
+    <!-- ORIGEN -->
+    <section id="origen" class="section">
+      <h2>📌 Origen</h2>
+      <p>
+        Este proyecto fue diseñado para ofrecer una interfaz
+        web simple y funcional que se sirve desde un ESP32,
+        conectando dispositivos IoT a una página accesible
+        desde cualquier navegador.
+      </p>
+    </section>
 
-  <!-- BUZÓN DE SUGERENCIAS -->
-  <section class="container">
-    <div class="card">
-      <h2>Buzón de sugerencias para esta página web</h2>
-      <form action="https://formspree.io/f/xykdybdg" method="POST" style="margin-top: 15px;">
-        <input type="text" name="sugerencia" placeholder="Escribe tu sugerencia aquí" required>
-        <button type="submit" class="btn" style="margin-top:10px;">Enviar</button>
-      </form>
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas" class="section">
+      <h2>✨ Características</h2>
+      <ul>
+        <li>Diseño responsivo y compatible con móviles.</li>
+        <li>Servidor web integrado en el ESP32.</li>
+        <li>Control de funcionalidades vía HTTP.</li>
+      </ul>
+    </section>
 
+    <!-- USOS -->
+    <section id="usos" class="section">
+      <h2>⚡ Usos</h2>
+      <p>El ESP32 se utiliza en proyectos de Internet de las Cosas (IoT) para conectar dispositivos de manera inalámbrica.</p>
+      <p>También sirve para automatización de hogares, control de luces, sensores y pequeños robots.</p>
+      <p>Además, se emplea en aplicaciones educativas y prototipos electrónicos por su bajo costo y versatilidad.</p>
+    </section>
+
+    <!-- BUZÓN DE SUGERENCIAS -->
+    <section id="sugerencias" class="section">
+      <h2>💬 Buzón de Sugerencias</h2>
+      <button id="openModalBtn">Abrir Buzón</button>
+    </section>
+
+    <!-- ENLACES OFICIALES -->
+    <section class="section">
+      <h2>🔗 Enlaces oficiales</h2>
       <div class="icons">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/espressif_systems_official/" target="_blank" class="icon-circle icon-instagram">
-          <i class="fab fa-instagram"></i>
+        <a href="https://www.instagram.com/espressif_systems_official/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
         </a>
-
-        <!-- Página oficial Espressif -->
-        <a href="https://www.espressif.com/" target="_blank" class="icon-circle icon-espressif">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Espressif_Logo.svg" alt="Espressif Logo">
+        <a href="https://www.espressif.com/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Espressif_logo.svg" alt="Página Oficial Espressif">
         </a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
+  <!-- MODAL -->
+  <div id="suggestionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>💬 Enviar Sugerencia</h2>
+      <form id="modalForm" class="contact-form">
+        <input type="text" name="name" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+        <textarea name="message" rows="5" placeholder="Tu sugerencia o comentario" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="modalResponse"></div>
+    </div>
+  </div>
+
+  <script>
+    // Abrir y cerrar modal
+    const modal = document.getElementById('suggestionModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.querySelector('.close');
+
+    openBtn.onclick = () => modal.style.display = 'block';
+    closeBtn.onclick = () => modal.style.display = 'none';
+    window.onclick = e => { if (e.target == modal) modal.style.display = 'none'; }
+
+    // Enviar formulario con JS y mostrar animación
+    const form = document.getElementById('modalForm');
+    const response = document.getElementById('modalResponse');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/diazdarlyng887@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        if (res.ok) {
+          response.textContent = '✅ ¡Sugerencia enviada correctamente!';
+          response.className = 'success';
+          form.reset();
+          setTimeout(() => modal.style.display = 'none', 2000);
+        } else {
+          throw new Error(result.message || 'Error al enviar.');
+        }
+      } catch {
+        response.textContent = '❌ Ocurrió un error, intenta nuevamente.';
+        response.className = 'error';
+      }
+    });
+  </script>
 </body>
 </html>
