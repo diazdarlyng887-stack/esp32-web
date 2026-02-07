@@ -56,6 +56,23 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
+  /* NUEVAS SUBCARDS PEQUEÑAS EN FILA */
+  .row-subcards {
+    display:flex; flex-wrap: wrap; gap:15px; justify-content:flex-start;
+  }
+  .row-subcards .subcard {
+    flex: 1 1 calc(33% - 10px);
+    text-align:center;
+    border-left:none;
+    padding:10px;
+    font-size:14px;
+  }
+  .row-subcards .subcard:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    background:#f0f8ff;
+  }
+
   #openModalBtn { padding:10px 20px; background:#0077cc; color:white; border:none; cursor:pointer; font-size:16px; border-radius:5px; }
 
   .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
@@ -99,9 +116,7 @@
   <a onclick="scrollToSection('caracteristicas')">Características</a>
   <a onclick="scrollToSection('usos')">Usos</a>
   <a onclick="scrollToSection('sugerencias')">Sugerencias</a>
-  <a onclick="scrollToSection('contactos')">Contactos</a>
-  <a onclick="scrollToSection('empresas')">Colaboradores</a>
-  <a onclick="scrollToSection('redes')">Redes</a>
+  <a onclick="scrollToSection('footerExtra')">Extras</a>
 </nav>
 
 <main>
@@ -134,27 +149,19 @@
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
 
-  <!-- FOOTER EXTENDIDO -->
-  <div id="contactos" class="card">
-    <h2>📞 Contactos</h2>
-    <div class="subcard">Correo: sales@espressif.com</div>
-    <div class="subcard">Teléfono: +1 829 936 1254</div>
-    <div class="subcard">Dirección: Shanghái, China</div>
+  <!-- FOOTER EXTENDIDO EN FILA -->
+  <div id="footerExtra" class="card">
+    <h2>📇 Extras</h2>
+    <div class="row-subcards">
+      <div class="subcard">Correo: sales@espressif.com</div>
+      <div class="subcard">Tel: +1 829 936 1254</div>
+      <div class="subcard">Dirección: Shanghái, China</div>
+      <div class="subcard">Empresa 1: TSMC</div>
+      <div class="subcard">Empresa 2: Tensilica</div>
+      <div class="subcard">Empresa 3: Espressif Systems</div>
+    </div>
   </div>
 
-  <div id="empresas" class="card">
-    <h2>🏢 Empresas Colaboradoras</h2>
-    <div class="subcard">Empresa 1: TSMC (Taiwan Semiconductor Manufacturing Company)</div>
-    <div class="subcard">Empresa 2: Tensilica (Xtensa LX6)</div>
-    <div class="subcard">Empresa 3: Espressif Systems</div>
-  </div>
-
-  <div id="redes" class="card">
-    <h2>🌐 Redes y Recursos</h2>
-    <div class="subcard">Instagram oficial: <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">@espressif_systems_official</a></div>
-    <div class="subcard">Página oficial Espressif: <a href="https://www.espressif.com/" target="_blank">espressif.com</a></div>
-    <div class="subcard">GitHub: <a href="https://github.com/espressif" target="_blank">Espressif GitHub</a></div>
-  </div>
 </main>
 
 <!-- ICONOS -->
