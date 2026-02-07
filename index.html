@@ -108,6 +108,56 @@
 
   .subcard a { text-decoration:none; color:#0077cc; }
   .subcard a:hover { text-decoration:underline; }
+
+  /* TOOLTIP ESTILIZADO */
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: #0077cc;
+  }
+  .tooltip:hover { text-decoration: underline; }
+  .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    max-width: 250px;
+    background-color: #0077cc;
+    color: #fff;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #0077cc transparent transparent transparent;
+  }
+  /* Hover normal */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  /* Active para móviles */
+  .tooltip.active .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
 </style>
 </head>
 <body>
@@ -159,11 +209,17 @@
       <div class="subcard"><a href="mailto:sales@espressif.com">Correo: sales@espressif.com</a></div>
       <div class="subcard"><a href="tel:+18299361254">Tel: +1 829 936 1254</a></div>
       <div class="subcard"><a href="https://www.google.com/maps/search/Shanghái,+China" target="_blank">Dirección: Shanghái, China</a></div>
-      <!-- Empresas Colaboradoras en UNA sola subcard con tooltips -->
+      <!-- Empresas Colaboradoras en UNA sola subcard con tooltip -->
       <div class="subcard">
-        <a href="https://www.tsmc.com/" target="_blank" title="Taiwan Semiconductor Manufacturing Company">Empresa 1: TSMC</a><br>
-        <a href="https://www.tensilica.com/" target="_blank" title="Xtensa LX6">Empresa 2: Tensilica</a><br>
-        <a href="https://www.espressif.com/" target="_blank" title="Espressif Systems">Empresa 3: Espressif Systems</a>
+        <a href="https://www.tsmc.com/" target="_blank" class="tooltip">Empresa 1: TSMC
+          <span class="tooltiptext">Taiwan Semiconductor Manufacturing Company</span>
+        </a><br>
+        <a href="https://www.tensilica.com/" target="_blank" class="tooltip">Empresa 2: Tensilica
+          <span class="tooltiptext">Xtensa LX6</span>
+        </a><br>
+        <a href="https://www.espressif.com/" target="_blank" class="tooltip">Empresa 3: Espressif Systems
+          <span class="tooltiptext">Espressif Systems</span>
+        </a>
       </div>
     </div>
   </div>
@@ -252,6 +308,19 @@
       giftBox.querySelector('.gift-text').textContent = 'Diseño y Desarrollo Web hecho por: Darling';
     }
   };
+
+  // TOOLTIP PARA MÓVILES
+  const tooltips = document.querySelectorAll('.tooltip');
+  tooltips.forEach(t => {
+    t.addEventListener('click', e => {
+      e.preventDefault();
+      tooltips.forEach(other => { if(other!==t) other.classList.remove('active'); });
+      t.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', e => {
+    tooltips.forEach(t => { if(!t.contains(e.target)) t.classList.remove('active'); });
+  });
 </script>
 
 </body>
