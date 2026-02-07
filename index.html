@@ -57,19 +57,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  /* Caja Conceptos debajo de Bienvenido */
-  #conceptos-box {
-    background: #ffffff;
-    padding:15px; margin:15px 0; border-radius:12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  #conceptos-box:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-  }
-
   #openModalBtn { padding:10px 20px; background:#0077cc; color:white; border:none; cursor:pointer; font-size:16px; border-radius:5px; }
 
   .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
@@ -109,7 +96,6 @@
 
 <header id="headerCard">Bienvenido a ESP32 Web</header>
 <nav>
-  <a onclick="scrollToSection('conceptos')">Conceptos</a>
   <a onclick="scrollToSection('origen')">Origen</a>
   <a onclick="scrollToSection('caracteristicas')">Características</a>
   <a onclick="scrollToSection('usos')">Usos</a>
@@ -117,16 +103,6 @@
 </nav>
 
 <main>
-  <!-- Caja debajo de Bienvenido -->
-  <div id="conceptos-box">📘 Conceptos Iniciales</div>
-
-  <!-- Conceptos originales -->
-  <div id="conceptos" class="card">
-    <div class="subcard">Concepto 1: Introducción al ESP32 y sus funcionalidades básicas.</div>
-    <div class="subcard">Concepto 2: Conexión de dispositivos IoT y su integración en la web.</div>
-    <div class="subcard">Concepto 3: Importancia de la comunicación inalámbrica y protocolos.</div>
-  </div>
-
   <!-- ORIGEN -->
   <div id="origen" class="card">
     <h2>📌 Origen</h2>
@@ -155,17 +131,17 @@
     <h2>💬 Buzón de Sugerencias</h2>
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
-
-  <!-- ICONOS -->
-  <div class="icons">
-    <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
-    </a>
-    <a href="https://www.espressif.com/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Espressif_logo.svg" alt="Página Oficial Espressif">
-    </a>
-  </div>
 </main>
+
+<!-- ICONOS -->
+<div class="icons">
+  <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
+  </a>
+  <a href="https://www.espressif.com/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Espressif_logo.svg" alt="Página Oficial Espressif">
+  </a>
+</div>
 
 <!-- MODAL -->
 <div id="suggestionModal" class="modal">
