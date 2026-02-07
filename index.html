@@ -3,134 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ESP32</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>ESP32 Web</title>
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
-    body { background-color: #f5f5f5; color:#333; line-height:1.6; }
-
-    .container { max-width:1100px; margin:0 auto; padding:40px 20px; }
-
-    .btn {
-      background-color: #5DADE2;
-      color:#fff;
-      padding:10px 20px;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      transition: transform 0.2s, background-color 0.2s;
-      text-decoration:none;
-      display:inline-block;
-      margin-top:10px;
-    }
-    .btn:hover { transform:scale(1.05); background-color:#3498DB; }
-
-    input, textarea {
-      width:100%;
-      padding:10px;
-      margin:10px 0;
-      border-radius:6px;
-      border:1px solid #ccc;
-      box-shadow:0 2px 5px rgba(0,0,0,0.1);
-      font-size:16px;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
 
     section {
-      margin-bottom:60px;
-      opacity:0;
-      transform: translateY(50px);
-      transition: all 0.6s ease-out;
-    }
-    section.visible { opacity:1; transform: translateY(0); }
-
-    h1, h2 { color:#2C3E50; margin-bottom:20px; }
-
-    img { max-width:100%; border-radius:10px; }
-
-    .hero {
-      text-align:center;
-      padding:80px 20px;
-      background-color:#EAF2F8;
-      border-radius:12px;
-      margin-bottom:40px;
-      opacity:0;
-      transform: translateY(-50px);
-      animation: fadeInDown 1s forwards;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    @keyframes fadeInDown {
-      to { opacity:1; transform:translateY(0); }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #1f3c88;
     }
 
-    .info { display:flex; flex-wrap:wrap; gap:20px; }
-    .info div {
-      flex:1 1 45%;
-      background-color:#fff;
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px; /* separa las cards */
+      transition: transform 0.2s;
     }
 
-    @media(max-width:768px){ .info div { flex:1 1 100%; } }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #1f3c88;
+      color: #fff;
+      font-size: 16px;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #0d265e;
+      transform: translateY(-2px);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-size: 16px;
+    }
+
+    .icons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .icon-circle {
+      display: inline-flex;
+      justify-content:center;
+      align-items:center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .icon-circle:hover {
+      transform: scale(1.1);
+    }
+
+    .icon-instagram {
+      background-color: #E4405F;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .icon-espressif {
+      background-color: #000;
+    }
+
+    .icon-espressif img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Bienvenido a Nuestra Página</h1>
-    <p>Descubre cómo funciona, sus características y su origen.</p>
-    <h1>ESP32</h1>
-    <a href="#info" class="btn">Saber más</a>
-  </section>
+  <!-- SECCIÓN CARACTERÍSTICAS -->
+  <section>
+    <div class="card">
+      <h2>Características</h2>
+      <p>El ESP32 tiene un procesador dual-core y 520 KB de RAM interna, junto con 4 MB de memoria flash en la mayoría de los modelos. Cuenta con múltiples pines GPIO, convertidores analógico-digital, interfaces SPI, I2C, UART y PWM, además de Wi-Fi y Bluetooth integrados. También incluye soporte para sensores, actuadores y periféricos externos, todo en un solo chip compacto.</p>
+    </div>
 
-  <!-- INFO DETALLADA -->
-  <section id="info" class="container">
-    <div class="info">
-      <div>
-        <h2>Cómo funciona?</h2>
-        <p>. Funciona ejecutando código programado (generalmente en C++ con Arduino IDE o MicroPython) que gestiona entradas/salidas, procesa datos y se comunica inalámbricamente, operando estrictamente a 3.3V</p>
-      </div>
-      <div>
-        <div>
-  <h2>Características</h2>
-  <p>El ESP32 tiene un procesador dual-core y 520 KB de RAM interna, junto con 4 MB de memoria flash en la mayoría de los modelos. Cuenta con múltiples pines GPIO, convertidores analógico-digital, interfaces SPI, I2C, UART y PWM, además de Wi-Fi y Bluetooth integrados. También incluye soporte para sensores, actuadores y periféricos externos, todo en un solo chip compacto.</p>
-</div>
-
-        <h2>Origen</h2>
-        <p>El ESP32 es un microcontrolador de bajo costo y consumo, con Wi-Fi y Bluetooth integrados, desarrollado por la empresa china Espressif Systems en Shanghái. Lanzado oficialmente en 2016 como el sucesor del popular ESP8266, el ESP32 se diseñó para mejorar la potencia, versatilidad y conectividad en aplicaciones de Internet de las Cosas (IoT).</p>
-      </div>
-      <div>
-        <h2>Uso recomendado</h2>
-        <p>Ideal para empresas, proyectos educativos y portafolios personales que busquen una presentación atractiva y funcional.</p>
-      </div>
+    <div class="card">
+      <h2>Origen</h2>
+      <p>El ESP32 es un microcontrolador de bajo costo y consumo, con Wi-Fi y Bluetooth integrados, desarrollado por la empresa china Espressif Systems en Shanghái. Lanzado oficialmente en 2016 como sucesor del ESP8266, se diseñó para mejorar la potencia, versatilidad y conectividad en aplicaciones de Internet de las Cosas (IoT).</p>
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- BUZÓN DE SUGERENCIAS -->
   <section class="container">
-  <h2>Contáctanos</h2>
-  <form>
-    <input type="text" placeholder="Nombre" required>
-    <input type="email" placeholder="Correo electrónico" required>
-    <textarea rows="4" placeholder="Tu mensaje"></textarea>
-    <button type="submit" class="btn">Enviar</button>
-  </form>
-  
-  <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
-    <a href="https://www.instagram.com/espressif_systems_official/" target="_blank" class="btn" style="background-color:#E4405F;">Instagram</a>
-    <a href="https://www.espressif.com/" target="_blank" class="btn" style="background-color:#28A745;">Página Oficial</a>
-  </div>
-</section>
+    <div class="card">
+      <h2>Buzón de sugerencias para esta página web</h2>
+      <form action="https://formspree.io/f/xykdybdg" method="POST" style="margin-top: 15px;">
+        <input type="text" name="sugerencia" placeholder="Escribe tu sugerencia aquí" required>
+        <button type="submit" class="btn" style="margin-top:10px;">Enviar</button>
+      </form>
 
-  <script>
-    // EFECTO SCROLL
-    const sections = document.querySelectorAll('section:not(.hero)');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
-    }, { threshold:0.2 });
-    sections.forEach(section => observer.observe(section));
-  </script>
+      <div class="icons">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/espressif_systems_official/" target="_blank" class="icon-circle icon-instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <!-- Página oficial Espressif -->
+        <a href="https://www.espressif.com/" target="_blank" class="icon-circle icon-espressif">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Espressif_Logo.svg" alt="Espressif Logo">
+        </a>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>
