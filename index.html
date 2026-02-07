@@ -14,6 +14,7 @@
     position: relative;
   }
 
+  /* Filtro oscuro corregido */
   body::before {
     content:"";
     position:fixed; top:0; left:0; width:100%; height:100%;
@@ -34,13 +35,15 @@
   nav { text-align:center; margin-bottom:10px; }
   nav a { margin:0 10px; color:white; text-decoration:none; font-weight:bold; cursor:pointer; }
 
-  main { padding:20px; max-width:900px; margin:0 auto; color:white; }
+  main { padding:20px; max-width:900px; margin:0 auto; }
 
+  /* Cajas generales */
   .card {
     background: linear-gradient(145deg,#ffffff,#e6f2ff); 
     padding:20px; margin:20px 0; border-radius:15px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     opacity:0; transform: translateY(50px); transition: all 0.6s ease;
+    color:#000; /* texto visible sobre fondo claro */
   }
   .card.visible { opacity:1; transform:translateY(0); }
   .card h2 { margin-top:0; color:#0077cc; }
@@ -55,7 +58,6 @@
     opacity:0;
     transform: translateY(50px);
     transition: all 0.6s ease;
-    color:#000;
   }
   .subcard.visible { opacity:1; transform: translateY(0); }
   .subcard:hover {
@@ -63,15 +65,6 @@
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
-  /* DEGRADADO AZUL SUAVE EN CONCEPTOS */
-  #conceptos {
-    background: linear-gradient(135deg,#cce6ff,#ffffff);
-    padding:20px; margin:20px 0; border-radius:15px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    opacity:0; transform: translateY(50px); transition: all 0.6s ease;
-  }
-  #conceptos h2 { color:#004c99; }
 
   #openModalBtn { padding:10px 20px; background:#0077cc; color:white; border:none; cursor:pointer; font-size:16px; border-radius:5px; }
 
@@ -89,6 +82,7 @@
   .icons img { width:40px; margin-right:15px; vertical-align:middle; transition: transform 0.2s; }
   .icons img:hover { transform: scale(1.3); }
 
+  /* Caja de regalo */
   .footer-credit { position: fixed; bottom: 10px; right: 10px; }
   .gift-box {
     width:180px; height:60px; background:#ff4d4d; border-radius:10px; color:white;
@@ -99,10 +93,10 @@
     position:absolute; top:0; left:0; width:100%; height:50%; background:#ff0000; border-bottom:2px solid #cc0000;
     border-radius:10px 10px 0 0; transform-origin: top center; transition: transform 0.6s ease; z-index:2;
   }
-  .gift-box.open .lid { transform: rotateX(-120deg); }
   .gift-box .gift-text {
-    z-index:1; transition: all 0.6s ease; opacity:1; text-align:center; padding:0 5px;
+    z-index:3; transition: all 0.6s ease; opacity:1; text-align:center; padding:0 5px;
   }
+  .gift-box.open .lid { transform: rotateX(-120deg); }
   .gift-box.open .gift-text { color:#555; font-weight:normal; transform: scale(1.1); }
 </style>
 </head>
@@ -118,6 +112,7 @@
 </nav>
 
 <main>
+  <!-- Conceptos debajo de Bienvenido -->
   <div id="conceptos" class="card">
     <h2>📘 Conceptos Iniciales</h2>
     <div class="subcard">Concepto 1: Introducción al ESP32 y sus funcionalidades básicas.</div>
@@ -125,12 +120,14 @@
     <div class="subcard">Concepto 3: Importancia de la comunicación inalámbrica y protocolos.</div>
   </div>
 
+  <!-- ORIGEN -->
   <div id="origen" class="card">
     <h2>📌 Origen</h2>
     <div class="subcard">Este proyecto fue diseñado para ofrecer una interfaz web simple y funcional que se sirve desde un ESP32.</div>
     <div class="subcard">Conecta dispositivos IoT a una página accesible desde cualquier navegador.</div>
   </div>
 
+  <!-- CARACTERÍSTICAS -->
   <div id="caracteristicas" class="card">
     <h2>✨ Características</h2>
     <div class="subcard">Diseño responsivo y compatible con móviles.</div>
@@ -138,6 +135,7 @@
     <div class="subcard">Control de funcionalidades vía HTTP.</div>
   </div>
 
+  <!-- USOS -->
   <div id="usos" class="card">
     <h2>⚡ Usos</h2>
     <div class="subcard">El ESP32 se utiliza en proyectos de Internet de las Cosas (IoT) para conectar dispositivos de manera inalámbrica.</div>
@@ -145,11 +143,13 @@
     <div class="subcard">Se emplea en aplicaciones educativas y prototipos electrónicos por su bajo costo y versatilidad.</div>
   </div>
 
+  <!-- BUZÓN DE SUGERENCIAS -->
   <div id="sugerencias" class="card">
     <h2>💬 Buzón de Sugerencias</h2>
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
 
+  <!-- ICONOS OFICIALES -->
   <div class="icons">
     <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
@@ -160,6 +160,7 @@
   </div>
 </main>
 
+<!-- MODAL -->
 <div id="suggestionModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -174,6 +175,7 @@
   </div>
 </div>
 
+<!-- Footer sorpresa -->
 <div class="footer-credit">
   <div class="gift-box" id="giftBox">
     <div class="lid"></div>
