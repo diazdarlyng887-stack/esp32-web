@@ -6,9 +6,21 @@
 <title>ESP32 Web</title>
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+  body {
+    font-family: Arial, sans-serif;
+    margin:0; padding:0;
+    background: url('/mnt/data/f3e918cd-8cc9-4341-8508-6eaaf8e6b54b.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+  }
 
-  /* Header decorado */
+  body::before {
+    content:"";
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index:-1;
+  }
+
   header {
     display:flex; justify-content:center; align-items:center;
     padding:20px; margin:20px; border-radius:15px;
@@ -22,9 +34,8 @@
   nav { text-align:center; margin-bottom:10px; }
   nav a { margin:0 10px; color:white; text-decoration:none; font-weight:bold; cursor:pointer; }
 
-  main { padding:20px; max-width:900px; margin:0 auto; }
+  main { padding:20px; max-width:900px; margin:0 auto; color:white; }
 
-  /* Cards principales */
   .card {
     background: linear-gradient(145deg,#ffffff,#e6f2ff); 
     padding:20px; margin:20px 0; border-radius:15px;
@@ -32,11 +43,10 @@
     opacity:0; transform: translateY(50px); transition: all 0.6s ease;
   }
   .card.visible { opacity:1; transform:translateY(0); }
-  .card h2 { margin-top:0; }
+  .card h2 { margin-top:0; color:#0077cc; }
 
-  /* Subcards / definiciones decoradas */
   .subcard {
-    background: #f0f8ff;
+    background: #ffffff;
     padding: 12px;
     margin: 10px 0;
     border-radius: 10px;
@@ -45,23 +55,26 @@
     opacity:0;
     transform: translateY(50px);
     transition: all 0.6s ease;
+    color:#000;
   }
   .subcard.visible { opacity:1; transform: translateY(0); }
-
-  /* Mini-zoom al pasar el mouse */
   .subcard:hover {
     transform: translateY(0) scale(1.03);
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  /* Hover en cards */
-  .card:hover { transform: translateY(-10px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
+  /* DEGRADADO AZUL SUAVE EN CONCEPTOS */
+  #conceptos {
+    background: linear-gradient(135deg,#cce6ff,#ffffff);
+    padding:20px; margin:20px 0; border-radius:15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    opacity:0; transform: translateY(50px); transition: all 0.6s ease;
+  }
+  #conceptos h2 { color:#004c99; }
 
-  /* Botón modal */
   #openModalBtn { padding:10px 20px; background:#0077cc; color:white; border:none; cursor:pointer; font-size:16px; border-radius:5px; }
 
-  /* Modal con zoom */
   .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
   .modal-content { background:#fff; margin:10% auto; padding:20px; border-radius:10px; width:90%; max-width:400px; position:relative; transform: scale(0.7); opacity:0; transition: all 0.4s ease; }
   .modal.show .modal-content { transform: scale(1); opacity:1; }
@@ -73,11 +86,9 @@
   .success { color:green; animation:fadeIn 0.5s; }
   .error { color:red; animation:fadeIn 0.5s; }
 
-  /* Iconos */
   .icons img { width:40px; margin-right:15px; vertical-align:middle; transition: transform 0.2s; }
   .icons img:hover { transform: scale(1.3); }
 
-  /* Footer regalo */
   .footer-credit { position: fixed; bottom: 10px; right: 10px; }
   .gift-box {
     width:180px; height:60px; background:#ff4d4d; border-radius:10px; color:white;
@@ -99,6 +110,7 @@
 
 <header id="headerCard">Bienvenido a ESP32 Web</header>
 <nav>
+  <a onclick="scrollToSection('conceptos')">Conceptos</a>
   <a onclick="scrollToSection('origen')">Origen</a>
   <a onclick="scrollToSection('caracteristicas')">Características</a>
   <a onclick="scrollToSection('usos')">Usos</a>
@@ -106,14 +118,19 @@
 </nav>
 
 <main>
-  <!-- ORIGEN -->
+  <div id="conceptos" class="card">
+    <h2>📘 Conceptos Iniciales</h2>
+    <div class="subcard">Concepto 1: Introducción al ESP32 y sus funcionalidades básicas.</div>
+    <div class="subcard">Concepto 2: Conexión de dispositivos IoT y su integración en la web.</div>
+    <div class="subcard">Concepto 3: Importancia de la comunicación inalámbrica y protocolos.</div>
+  </div>
+
   <div id="origen" class="card">
     <h2>📌 Origen</h2>
     <div class="subcard">Este proyecto fue diseñado para ofrecer una interfaz web simple y funcional que se sirve desde un ESP32.</div>
     <div class="subcard">Conecta dispositivos IoT a una página accesible desde cualquier navegador.</div>
   </div>
 
-  <!-- CARACTERÍSTICAS -->
   <div id="caracteristicas" class="card">
     <h2>✨ Características</h2>
     <div class="subcard">Diseño responsivo y compatible con móviles.</div>
@@ -121,7 +138,6 @@
     <div class="subcard">Control de funcionalidades vía HTTP.</div>
   </div>
 
-  <!-- USOS -->
   <div id="usos" class="card">
     <h2>⚡ Usos</h2>
     <div class="subcard">El ESP32 se utiliza en proyectos de Internet de las Cosas (IoT) para conectar dispositivos de manera inalámbrica.</div>
@@ -129,13 +145,11 @@
     <div class="subcard">Se emplea en aplicaciones educativas y prototipos electrónicos por su bajo costo y versatilidad.</div>
   </div>
 
-  <!-- BUZÓN DE SUGERENCIAS -->
   <div id="sugerencias" class="card">
     <h2>💬 Buzón de Sugerencias</h2>
     <button id="openModalBtn">Abrir Buzón</button>
   </div>
 
-  <!-- ICONOS OFICIALES -->
   <div class="icons">
     <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Oficial">
@@ -146,7 +160,6 @@
   </div>
 </main>
 
-<!-- MODAL -->
 <div id="suggestionModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -161,7 +174,6 @@
   </div>
 </div>
 
-<!-- Footer sorpresa -->
 <div class="footer-credit">
   <div class="gift-box" id="giftBox">
     <div class="lid"></div>
@@ -170,18 +182,15 @@
 </div>
 
 <script>
-  // Animar header
   const header = document.getElementById('headerCard');
   window.addEventListener('DOMContentLoaded', ()=>{ setTimeout(()=>header.classList.add('visible'),200); });
 
-  // Animar las cards al hacer scroll
   const cards = document.querySelectorAll('.card');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.2 });
   cards.forEach(card => observer.observe(card));
 
-  // Animar subcards al hacer scroll
   const subcards = document.querySelectorAll('.subcard');
   const subObserver = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -192,7 +201,6 @@
 
   function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
-  // Modal buzón
   const modal = document.getElementById('suggestionModal');
   const openBtn = document.getElementById('openModalBtn');
   const closeBtn = document.querySelector('.close');
@@ -200,7 +208,6 @@
   closeBtn.onclick = ()=>{ modal.classList.remove('show'); setTimeout(()=> modal.style.display='none',400); }
   window.onclick = e=>{ if(e.target==modal){ modal.classList.remove('show'); setTimeout(()=> modal.style.display='none',400); } }
 
-  // Formulario buzón
   const form = document.getElementById('modalForm');
   const response = document.getElementById('modalResponse');
   form.addEventListener('submit', async e=>{
@@ -216,7 +223,6 @@
     }catch{ response.textContent='❌ Ocurrió un error, intenta nuevamente.'; response.className='error'; }
   });
 
-  // Footer regalo
   const giftBox = document.getElementById('giftBox');
   giftBox.onclick = ()=>{
     if(!giftBox.classList.contains('open')){
