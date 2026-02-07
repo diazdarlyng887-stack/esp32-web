@@ -28,7 +28,6 @@
 
   main { padding:20px; max-width:900px; margin:0 auto; }
 
-  /* Cajas generales */
   .card {
     background: linear-gradient(145deg,#ffffff,#e6f2ff); 
     padding:20px; margin:20px 0; border-radius:15px;
@@ -100,6 +99,9 @@
   <a onclick="scrollToSection('caracteristicas')">Características</a>
   <a onclick="scrollToSection('usos')">Usos</a>
   <a onclick="scrollToSection('sugerencias')">Sugerencias</a>
+  <a onclick="scrollToSection('contactos')">Contactos</a>
+  <a onclick="scrollToSection('empresas')">Colaboradores</a>
+  <a onclick="scrollToSection('redes')">Redes</a>
 </nav>
 
 <main>
@@ -130,6 +132,28 @@
   <div id="sugerencias" class="card">
     <h2>💬 Buzón de Sugerencias</h2>
     <button id="openModalBtn">Abrir Buzón</button>
+  </div>
+
+  <!-- FOOTER EXTENDIDO -->
+  <div id="contactos" class="card">
+    <h2>📞 Contactos</h2>
+    <div class="subcard">Correo: sales@espressif.com</div>
+    <div class="subcard">Teléfono: +1 829 936 1254</div>
+    <div class="subcard">Dirección: Shanghái, China</div>
+  </div>
+
+  <div id="empresas" class="card">
+    <h2>🏢 Empresas Colaboradoras</h2>
+    <div class="subcard">Empresa 1: TSMC (Taiwan Semiconductor Manufacturing Company)</div>
+    <div class="subcard">Empresa 2: Tensilica (Xtensa LX6)</div>
+    <div class="subcard">Empresa 3: Espressif Systems</div>
+  </div>
+
+  <div id="redes" class="card">
+    <h2>🌐 Redes y Recursos</h2>
+    <div class="subcard">Instagram oficial: <a href="https://www.instagram.com/espressif_systems_official/" target="_blank">@espressif_systems_official</a></div>
+    <div class="subcard">Página oficial Espressif: <a href="https://www.espressif.com/" target="_blank">espressif.com</a></div>
+    <div class="subcard">GitHub: <a href="https://github.com/espressif" target="_blank">Espressif GitHub</a></div>
   </div>
 </main>
 
