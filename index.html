@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Estética</title>
+  <title>ESP32</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
@@ -80,6 +80,7 @@
   <section class="hero">
     <h1>Bienvenido a Nuestra Página</h1>
     <p>Descubre cómo funciona, sus características y su origen.</p>
+    <h1>ESP32</h1>
     <a href="#info" class="btn">Saber más</a>
   </section>
 
@@ -87,16 +88,17 @@
   <section id="info" class="container">
     <div class="info">
       <div>
-        <h2>Cómo funciona</h2>
-        <p>Explicamos paso a paso el funcionamiento de nuestro sistema de forma clara y sencilla para que cualquiera pueda entenderlo.</p>
+        <h2>Cómo funciona?</h2>
+        <p>. Funciona ejecutando código programado (generalmente en C++ con Arduino IDE o MicroPython) que gestiona entradas/salidas, procesa datos y se comunica inalámbricamente, operando estrictamente a 3.3V</p>
       </div>
       <div>
-        <h2>Características</h2>
-        <p>Incluye diseño moderno, interfaz intuitiva, compatibilidad con dispositivos móviles y optimización de velocidad.</p>
-      </div>
-      <div>
+        <div>
+  <h2>Características</h2>
+  <p>El ESP32 tiene un procesador dual-core y 520 KB de RAM interna, junto con 4 MB de memoria flash en la mayoría de los modelos. Cuenta con múltiples pines GPIO, convertidores analógico-digital, interfaces SPI, I2C, UART y PWM, además de Wi-Fi y Bluetooth integrados. También incluye soporte para sensores, actuadores y periféricos externos, todo en un solo chip compacto.</p>
+</div>
+
         <h2>Origen</h2>
-        <p>Creado por un equipo especializado en desarrollo web, con la intención de ofrecer una experiencia clara y estética.</p>
+        <p>El ESP32 es un microcontrolador de bajo costo y consumo, con Wi-Fi y Bluetooth integrados, desarrollado por la empresa china Espressif Systems en Shanghái. Lanzado oficialmente en 2016 como el sucesor del popular ESP8266, el ESP32 se diseñó para mejorar la potencia, versatilidad y conectividad en aplicaciones de Internet de las Cosas (IoT).</p>
       </div>
       <div>
         <h2>Uso recomendado</h2>
@@ -107,14 +109,19 @@
 
   <!-- CONTACTO -->
   <section class="container">
-    <h2>Contáctanos</h2>
-    <form>
-      <input type="text" placeholder="Nombre" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <textarea rows="4" placeholder="Tu mensaje"></textarea>
-      <button type="submit" class="btn">Enviar</button>
-    </form>
-  </section>
+  <h2>Contáctanos</h2>
+  <form>
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo electrónico" required>
+    <textarea rows="4" placeholder="Tu mensaje"></textarea>
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+  
+  <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+    <a href="https://www.instagram.com/espressif_systems_official/" target="_blank" class="btn" style="background-color:#E4405F;">Instagram</a>
+    <a href="https://www.espressif.com/" target="_blank" class="btn" style="background-color:#28A745;">Página Oficial</a>
+  </div>
+</section>
 
   <script>
     // EFECTO SCROLL
