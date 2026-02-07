@@ -106,6 +106,8 @@
   .gift-box.open .lid { transform: rotateX(-120deg); }
   .gift-box.open .gift-text { color:#555; font-weight:normal; transform: scale(1.1); }
 
+  .subcard a { text-decoration:none; color:#0077cc; }
+  .subcard a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -153,12 +155,14 @@
   <div id="footerExtra" class="card">
     <h2>📇 Extras</h2>
     <div class="row-subcards">
-      <div class="subcard">Correo: sales@espressif.com</div>
-      <div class="subcard">Tel: +1 829 936 1254</div>
-      <div class="subcard">Dirección: Shanghái, China</div>
-      <div class="subcard">Empresa 1: TSMC</div>
-      <div class="subcard">Empresa 2: Tensilica</div>
-      <div class="subcard">Empresa 3: Espressif Systems</div>
+      <!-- Contactos -->
+      <div class="subcard"><a href="mailto:sales@espressif.com">Correo: sales@espressif.com</a></div>
+      <div class="subcard"><a href="tel:+18299361254">Tel: +1 829 936 1254</a></div>
+      <div class="subcard"><a href="https://www.google.com/maps/search/Shanghái,+China" target="_blank">Dirección: Shanghái, China</a></div>
+      <!-- Empresas Colaboradoras -->
+      <div class="subcard"><a href="https://www.tsmc.com/" target="_blank">Empresa 1: TSMC</a></div>
+      <div class="subcard"><a href="https://www.tensilica.com/" target="_blank">Empresa 2: Tensilica</a></div>
+      <div class="subcard"><a href="https://www.espressif.com/" target="_blank">Empresa 3: Espressif Systems</a></div>
     </div>
   </div>
 
