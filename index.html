@@ -1,55 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ESP32</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Estética</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* RESET Y TIPOGRAFÍA */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
 
-  <link rel="stylesheet" href="style.css" />
+    /* CONTENEDORES */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-  <!-- AOS Animations -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    /* BOTONES */
+    .btn {
+      background-color: #5DADE2;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background-color: #3498DB;
+    }
+
+    /* FORMULARIOS */
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-size: 16px;
+    }
+
+    /* SECCIONES */
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* TITULOS */
+    h1, h2 {
+      color: #2C3E50;
+      margin-bottom: 20px;
+    }
+
+    /* IMÁGENES */
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* SECCIONES ESPECÍFICAS */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: #EAF2F8;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .info div {
+      flex: 1 1 45%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    @media(max-width: 768px){
+      .info div {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="hero">
-    <h1 data-aos="fade-down">ESP32</h1>
-    <p data-aos="fade-up">Microcontrolador potente para proyectos IoT</p>
-    <img src="assets/esp32-hero.jpg" alt="ESP32" data-aos="zoom-in">
-  </header>
+  <!-- HERO / PRESENTACIÓN -->
+  <section class="hero">
+    <h1>Bienvenido a Nuestra Página</h1>
+    <p>Descubre cómo funciona, sus características y su origen.</p>
+    <a href="#info" class="btn">Saber más</a>
+  </section>
 
-  <main class="container">
-
-    <section class="card" data-aos="fade-right">
-      <img src="assets/esp32-chips.jpg" alt="ESP32 chip">
+  <!-- SECCIÓN INFO DETALLADA -->
+  <section id="info" class="container">
+    <div class="info">
       <div>
-        <h2>¿Qué es el ESP32?</h2>
-        <p>
-          El ESP32 es un microcontrolador de bajo consumo con WiFi y Bluetooth
-          integrado, ideal para proyectos de automatización, robótica e IoT.
-        </p>
+        <h2>Cómo funciona</h2>
+        <p>Explicamos paso a paso el funcionamiento de nuestro sistema de forma clara y sencilla para que cualquiera pueda entenderlo.</p>
       </div>
-    </section>
-
-    <section class="card" data-aos="fade-left">
       <div>
-        <h2>Características principales</h2>
-        <ul>
-          <li>WiFi y Bluetooth integrados</li>
-          <li>Procesador Dual-Core</li>
-          <li>Bajo consumo energético</li>
-          <li>Compatible con Arduino y MicroPython</li>
-        </ul>
+        <h2>Características</h2>
+        <p>Incluye diseño moderno, interfaz intuitiva, compatibilidad con dispositivos móviles y optimización de velocidad.</p>
       </div>
-    </section>
+      <div>
+        <h2>Origen</h2>
+        <p>Creado por un equipo especializado en desarrollo web, con la intención de ofrecer una experiencia clara y estética.</p>
+      </div>
+      <div>
+        <h2>Uso recomendado</h2>
+        <p>Ideal para empresas, proyectos educativos y portafolios personales que busquen una presentación atractiva y funcional.</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <!-- SECCIÓN EXTRA / CONTACTO -->
+  <section class="container">
+    <h2>Contáctanos</h2>
+    <form>
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea rows="4" placeholder="Tu mensaje"></textarea>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
 
-  <footer>
-    <p>Creado por: <strong>Darling</strong></p>
-  </footer>
+  <script>
+    // EFECTO APARECER AL SCROLL
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="script.js"></script>
+    sections.forEach(section => observer.observe(section));
+  </script>
+
 </body>
 </html>
