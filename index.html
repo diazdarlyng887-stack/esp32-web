@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP32 — Información</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
+    <header class="hero">
+      <div class="hero__bg"></div>
+      <div class="container hero__content">
+        <div class="hero__text">
+          <p class="kicker">Microcontrolador Wi‑Fi + Bluetooth</p>
+          <h1>ESP32</h1>
+          <p class="lead">
+            El ESP32 es una familia de SoC (System‑on‑Chip) de Espressif Systems ideal para IoT, automatización y
+            prototipado rápido. Integra conectividad inalámbrica, buena potencia de cómputo y un ecosistema enorme.
+          </p>
+
+          <div class="hero__actions">
+            <button class="btn" id="btnExpandAll" type="button">Mostrar todo</button>
+            <button class="btn btn--ghost" id="btnCollapseAll" type="button">Ocultar todo</button>
+          </div>
+        </div>
+
+        <figure class="hero__figure">
+          <img
+            src="assets/esp32-hero.jpg"
+            alt="Placa de desarrollo basada en ESP32"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>ESP32 en una placa de desarrollo (imagen ilustrativa).</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <main id="contenido" class="container">
+      <section class="grid">
+        <article class="card" data-animate>
+          <img class="card__img" src="assets/esp32-chips.jpg" alt="Componentes electrónicos y chips" loading="lazy" />
+          <div class="card__body">
+            <h2>¿Qué es el ESP32?</h2>
+            <p>
+              Es un microcontrolador moderno pensado para proyectos conectados. Dependiendo del módulo/placa, suele
+              incluir antena, regulador y pines listos para usar.
+            </p>
+
+            <details class="details" open>
+              <summary>Ver información</summary>
+              <div class="details__content">
+                <ul>
+                  <li>SoC con Wi‑Fi 2.4 GHz y Bluetooth (clásico/BLE según variante).</li>
+                  <li>Soporta múltiples periféricos para sensores, actuadores y comunicación.</li>
+                  <li>Ideal para domótica, telemetría, estaciones meteorológicas, wearables y más.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="card" data-animate>
+          <img
+            class="card__img"
+            src="assets/esp32-hero.jpg"
+            alt="Placa ESP32 con componentes visibles"
+            loading="lazy"
+          />
+          <div class="card__body">
+            <h2>Conectividad</h2>
+            <p>La conectividad es uno de sus puntos fuertes: perfecto para proyectos IoT sin módulos externos.</p>
+
+            <details class="details">
+              <summary>Ver información</summary>
+              <div class="details__content">
+                <ul>
+                  <li><strong>Wi‑Fi</strong>: modo estación/AP, redes domésticas y hotspots.</li>
+                  <li><strong>Bluetooth</strong>: BLE para sensores, beacons, apps móviles y comunicación eficiente.</li>
+                  <li><strong>Redes</strong>: HTTP/HTTPS, MQTT, WebSockets y más (según librerías/firmware).</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="card" data-animate>
+          <img class="card__img" src="assets/esp32-chips.jpg" alt="Circuitería y microchips" loading="lazy" />
+          <div class="card__body">
+            <h2>Periféricos y pines</h2>
+            <p>Ofrece muchas opciones de entrada/salida para conectar módulos y sensores.</p>
+
+            <details class="details">
+              <summary>Ver información</summary>
+              <div class="details__content">
+                <ul>
+                  <li>GPIO, PWM, ADC (entradas analógicas) y DAC (en algunos modelos).</li>
+                  <li>UART, I2C, SPI para pantallas, memorias, sensores, etc.</li>
+                  <li>Touch capacitivo en varios pines (según el chip).</li>
+                </ul>
+                <p class="note">
+                  Nota: la disponibilidad real de pines depende de la placa (DevKit, WROOM, WROVER, etc.).
+                </p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="card" data-animate>
+          <img class="card__img" src="assets/esp32-hero.jpg" alt="Placa de desarrollo ESP32" loading="lazy" />
+          <div class="card__body">
+            <h2>Programación</h2>
+            <p>Se puede programar con varias herramientas populares, según tu estilo y necesidades.</p>
+
+            <details class="details">
+              <summary>Ver información</summary>
+              <div class="details__content">
+                <ul>
+                  <li><strong>Arduino IDE</strong>: fácil para comenzar y con muchas librerías.</li>
+                  <li><strong>ESP-IDF</strong>: framework oficial con más control y opciones avanzadas.</li>
+                  <li><strong>MicroPython</strong>: ideal para prototipos rápidos con Python.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" data-animate>
+        <h2>Ideas de proyectos</h2>
+        <div class="pill-row">
+          <span class="pill">Control por Wi‑Fi</span>
+          <span class="pill">Sensores + MQTT</span>
+          <span class="pill">Panel web</span>
+          <span class="pill">BLE + App móvil</span>
+          <span class="pill">Automatización</span>
+        </div>
+        <p class="panel__text">
+          Un ESP32 puede alojar un servidor web para controlar LEDs/relevadores, enviar datos de sensores a la nube,
+          registrar mediciones en una tarjeta SD, o comunicarse con una app móvil por BLE.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>creado por: darling</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+
