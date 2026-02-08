@@ -126,22 +126,23 @@
   }
   .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
   .tooltip.active .tooltiptext { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
+
   /* Ajuste de iconos en móviles para que no interfieran con la gift box */
-@media (max-width: 600px) {
-  .icons {
-    justify-content: flex-start; /* un poco más a la izquierda */
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 15px;
+  @media (max-width: 600px) {
+    .icons {
+      justify-content: flex-start !important; /* un poco más a la izquierda */
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+      gap: 15px !important;
+    }
+    .icons img {
+      width: 35px !important; /* reduce tamaño de iconos en móvil */
+      height: 35px !important;
+    }
+    .icons span {
+      font-size: 14px !important; /* texto más pequeño */
+    }
   }
-  .icons img {
-    width: 35px; /* reduce tamaño de iconos en móvil */
-    height: 35px;
-  }
-  .icons span {
-    font-size: 14px; /* texto un poco más pequeño */
-  }
-}
 </style>
 </head>
 <body>
@@ -221,8 +222,8 @@
     <span>Instagram Oficial</span>
   </a>
   <span style="color:#555;">|</span>
-  <a href="https://www.espressif.com/" target="_blank" style="display:flex; align-items:center; gap:5px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Espressif_logo.svg" alt="Página Oficial Espressif" width="40" height="40">
+  <a href="images/espessif-logo.svg" target="_blank" style="display:flex; align-items:center; gap:5px;">
+    <img src="images/espessif-logo.svg" alt="Página Oficial Espressif" width="50" height="50">
     <span>Página Oficial Espressif</span>
   </a>
 </div>
